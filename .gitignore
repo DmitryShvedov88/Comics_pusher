@@ -1,0 +1,8 @@
+.env
+story
+__pycache__
+*.pyc
+*.pyd
+*.pyo
+Thumbs.db
+.DS_Store
