@@ -14,7 +14,7 @@ First program: 'recive_space_x_photo' enter launch number for a photo from the S
     python recive_story.py 
 
     example of running:
-    python recive_story.py --count 5
+    python recive_story.py 
     program response:
     Ссылки есть
     Ссылок нет

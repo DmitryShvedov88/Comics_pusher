@@ -7,6 +7,7 @@ from dotenv import load_dotenv, find_dotenv
 
 
 def takefiles(directory):
+    """Take photos from directory on your computer"""
     images = []
     filesindir = os.listdir(directory)
     for filesindirs in filesindir:
@@ -16,7 +17,8 @@ def takefiles(directory):
     return images
 
 
-def send_photos(timer):
+def send_photos(timer, directory):
+    """Push photos in TG Bot Chat"""
     transfer_coefficient = 10
     timer = timer*transfer_coefficient
     images = takefiles(directory)
@@ -26,11 +28,9 @@ def send_photos(timer):
             with open(image, 'rb') as img:
                 bot.send_document(chat_id=chat_id, document=img)
         time.sleep(timer)
-        random_number = random.shuffle(images)
-        image = images[random_number]
-        with open(image, 'rb') as img:
-            bot.send_document(chat_id=chat_id, document=img)
-
+#        image = images[random_number]
+#        with open(image, 'rb') as img:
+#            bot.send_document(chat_id=chat_id, document=img)
 
 if __name__ == "__main__":
     load_dotenv(find_dotenv())
@@ -49,4 +49,4 @@ if __name__ == "__main__":
         )
     args = parser.parse_args()
     timer = args.time
-    send_photos(timer)
+    send_photos(timer, directory)
