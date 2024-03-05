@@ -1,6 +1,7 @@
 import requests
 import random
 from download_story import download_story
+from story_pusher import main
 
 
 def take_links():
@@ -17,8 +18,10 @@ def take_links():
         return
     print("Ссылки есть")
     print(comment)
-    download_story(photo_name, photo_format, link)
+    path = download_story(photo_name, photo_format, link)
+    return path
 
 
 if __name__ == "__main__":
-    take_links()
+    path = take_links()
+    main(path)

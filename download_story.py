@@ -11,3 +11,4 @@ def download_story(name, photo_format, down_load_link):
     response.raise_for_status()
     with open(path, 'wb') as file:
         file.write(response.content)
+    return path
