@@ -19,6 +19,7 @@ def delete_story(path):
     os.remove(path)
 
 
+
 def send_photos(chat_id, bot, directory):
     """Push photos in TG Bot Chat"""
     image = takefiles(directory)
