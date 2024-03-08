@@ -19,19 +19,14 @@ def delete_story(path):
     os.remove(path)
 
 
-
-def send_photos(chat_id, bot, directory):
+def send_photos(story):
     """Push photos in TG Bot Chat"""
-    image = takefiles(directory)
-    with open(*image, 'rb') as img:
-        bot.send_document(chat_id=chat_id, document=img)
-
-
-def main(path):
     load_dotenv(find_dotenv())
     tg_token = os.getenv("TG_TOKEN")
     chat_id = os.getenv("CHAT_ID")
     directory = os.getenv("DIRECTORY")
     bot = telegram.Bot(token=tg_token)
-    send_photos(chat_id, bot, directory)
-    delete_story(path)
+    image = takefiles(directory)
+    with open(*image, 'rb') as img:
+        bot.send_document(chat_id=chat_id, document=img)
+    delete_story(story)
