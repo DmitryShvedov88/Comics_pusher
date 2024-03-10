@@ -1,12 +1,16 @@
 import requests
 import random
+import os
 from download_story import download_story
 from story_pusher import send_photos
+
+FIRST_COMICS = 1
+LAST_COMICS = 2901
 
 
 def take_story():
     """Take a comics link"""
-    comix_numder = random.randrange(1, 2901)
+    comix_numder = random.randrange(FIRST_COMICS, LAST_COMICS)
     python_story = f"https://xkcd.com/{comix_numder}/info.0.json"
     response = requests.get(python_story, timeout=10)
     response.raise_for_status()
@@ -24,4 +28,5 @@ def take_story():
 
 if __name__ == "__main__":
     story = take_story()
-    send_photos(story)
+    send_photos()
+    os.remove(story)
