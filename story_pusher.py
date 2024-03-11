@@ -16,9 +16,9 @@ def takefiles(directory):
 def send_photos():
     """Push photos in TG Bot Chat"""
     load_dotenv(find_dotenv())
-    tg_token = os.getenv("TG_TOKEN")
-    chat_id = os.getenv("CHAT_ID")
-    directory = os.getenv("DIRECTORY")
+    tg_token = os.environ["TG_TOKEN"]
+    chat_id = os.environ["CHAT_ID"]
+    directory = os.getenv("DIRECTORY", default=None)
     bot = telegram.Bot(token=tg_token)
     image = takefiles(directory)
     with open(*image, 'rb') as img:
