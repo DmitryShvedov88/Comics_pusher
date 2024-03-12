@@ -14,24 +14,23 @@ def take_story():
     python_story = f"https://xkcd.com/{comix_numder}/info.0.json"
     response = requests.get(python_story, timeout=10)
     response.raise_for_status()
-    page_payload = response.json()
-    link = page_payload["img"]
-    photo_name = page_payload["num"]
-    comment = page_payload["alt"]
-    photo_format = "jpeg"
-    if not link:
-        print("Ссылок нет")
-        return
-    print("Ссылки есть")
-    print(comment)
-    story = download_story(photo_name, photo_format, link)
+    story = response.json()
     return story
 
 
 if __name__ == "__main__":
     try:
         story = take_story()
+        link = story["img"]
+        photo_name = story["num"]
+        comment = story["alt"]
+        photo_format = "jpeg"
+        if not link:
+            print("Ссылок нет")
+        print("Ссылки есть")
+        print(comment)
+        story = download_story(photo_name, photo_format, link)
         send_photos()
-        os.remove(story)
     finally:
+        print("program finish")
         os.remove(story)
