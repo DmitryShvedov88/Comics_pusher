@@ -10,7 +10,7 @@ But you have to start only first one/
 
 ### To upload a photo, you are given the opportunity to see what kind of photos they will be, using the necessary program.
 
-First program: 'recive_space_x_photo' enter launch number for a photo from the xkcd Website, if you don't, just start program, you will automatically get the newest.
+'recive_story.py' can download and push story from the xkcd Website to your TG channel, just start program, you will automatically get one comics.
     
     python recive_story.py 
 
@@ -20,9 +20,7 @@ First program: 'recive_space_x_photo' enter launch number for a photo from the x
     Ссылки есть
     Ссылок нет
     Story comment
-    
 
-The second part sends photos to the telegram channel. 
 
 ### How to check
 A folder will be created on the computer in the selected directory and photos will be uploaded there, and delete after push for computer.
