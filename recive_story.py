@@ -1,6 +1,7 @@
 import requests
 import random
 import os
+from dotenv import load_dotenv, find_dotenv
 from download_story import download_story
 from story_pusher import send_photos
 
@@ -19,6 +20,10 @@ def take_story():
 
 
 if __name__ == "__main__":
+    load_dotenv(find_dotenv())
+    tg_token = os.environ["TG_TOKEN"]
+    chat_id = os.environ["CHAT_ID"]
+    directory = os.getenv("DIRECTORY", default=None)
     try:
         story = take_story()
         link = story["img"]
@@ -30,7 +35,7 @@ if __name__ == "__main__":
         print("Ссылки есть")
         print(comment)
         story = download_story(photo_name, photo_format, link)
-        send_photos()
+        send_photos(tg_token, chat_id, directory)
     finally:
         print("program finish")
         os.remove(story)
